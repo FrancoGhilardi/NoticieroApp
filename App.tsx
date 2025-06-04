@@ -1,10 +1,11 @@
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import UsersScreen from "./src/presentation/screens/UsersScreen";
+import NewsScreen from "./src/presentation/screens/NewsScreens";
 
 const App: React.FC = () => {
   return (
     <SafeAreaProvider style={{ flex: 1, backgroundColor: "blue" }}>
-      <UsersScreen />
+      {/* <UsersScreen /> */}
+      <NewsScreen />
     </SafeAreaProvider>
   );
 };
