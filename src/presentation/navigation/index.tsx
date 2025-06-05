@@ -1,23 +1,30 @@
-import { RootStackParamList } from "@/src/core/types/navigation";
+import { TAB_SCREENS } from "@/src/core/constants/tabConfig";
+import { Ionicons } from "@expo/vector-icons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import NewsDetailScreen from "../screens/NewsDetailsScreen";
-import NewsScreen from "../screens/NewsScreens";
-import UsersScreen from "../screens/UsersScreen";
+import { ComponentProps } from "react";
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+export type IoniconsName = ComponentProps<typeof Ionicons>["name"];
+
+const Tab = createBottomTabNavigator();
 
 const AppNavigation: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="News"
-        screenOptions={{ title: "Noticias", headerTitleAlign: "center" }}
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ color, size }) => {
+            const screen = TAB_SCREENS.find((s) => s.name === route.name);
+            const iconName = screen?.icon ?? "help";
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          headerShown: false,
+        })}
       >
-        <Stack.Screen name="News" component={NewsScreen} />
-        <Stack.Screen name="User" component={UsersScreen} />
-        <Stack.Screen name="NewsDetail" component={NewsDetailScreen} />
-      </Stack.Navigator>
+        {TAB_SCREENS.map(({ name, component }) => (
+          <Tab.Screen key={name} name={name} component={component} />
+        ))}
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };
