@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { TextInput } from "react-native";
 
 interface Props {
@@ -6,9 +7,10 @@ interface Props {
 }
 
 const Sercher: React.FC<Props> = ({ query, setQuery }) => {
+  const { t } = useTranslation();
   return (
     <TextInput
-      placeholder="Buscar por título o contenido..."
+      placeholder={t("search_placeholder")}
       value={query}
       onChangeText={setQuery}
       style={{

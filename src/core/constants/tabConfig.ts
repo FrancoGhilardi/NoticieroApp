@@ -5,29 +5,29 @@ import SettingsScreen from "@/src/presentation/screens/SettingsScreen";
 import UsersScreen from "@/src/presentation/screens/UsersScreen";
 
 export type TabConfig = {
-  name: string;
+  key: string;
   component: React.ComponentType<any>;
   icon: IoniconsName;
 };
 
 export const TAB_SCREENS: TabConfig[] = [
   {
-    name: "Noticias",
+    key: "tabs.news",
     component: NewsScreens,
     icon: "home",
   },
   {
-    name: "Favotios",
+    key: "tabs.favorites",
     component: FavoritesScreens,
     icon: "heart",
   },
   {
-    name: "Usuarios",
+    key: "tabs.users",
     component: UsersScreen,
     icon: "person",
   },
   {
-    name: "Ajustes",
+    key: "tabs.settings",
     component: SettingsScreen,
     icon: "settings",
   },

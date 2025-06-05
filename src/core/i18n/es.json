@@ -1,0 +1,14 @@
+{
+  "settings": "Ajustes",
+  "change_language": "Cambiar idioma",
+  "select_language": "Seleccionar idioma",
+  "spanish": "Español",
+  "english": "Inglés",
+  "search_placeholder": "Buscar por título o contenido...",
+  "tabs": {
+    "news": "Noticias",
+    "favorites": "Favoritos",
+    "users": "Usuarios",
+    "settings": "Ajustes"
+  }
+}
