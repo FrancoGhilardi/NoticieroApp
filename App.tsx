@@ -1,17 +1,11 @@
 import { useEffect, useState } from "react";
-import { ActivityIndicator, View } from "react-native";
+import { ActivityIndicator } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { initI18n } from "./src/core/i18n";
-import AppNavigation from "./src/presentation/navigation";
-import { useThemeStore } from "./src/state/themeState";
+import RootNavigator from "./src/presentation/navigation/RootNavigator";
 
 const App: React.FC = () => {
   const [ready, setReady] = useState<boolean>(false);
-  const loadTheme = useThemeStore((state) => state.loadTheme);
-
-  useEffect(() => {
-    loadTheme();
-  }, [loadTheme]);
 
   useEffect(() => {
     const setup = async () => {
@@ -21,17 +15,11 @@ const App: React.FC = () => {
     setup();
   }, []);
 
-  if (!ready) {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size="large" />
-      </View>
-    );
-  }
+  if (!ready) return <ActivityIndicator size="large" />;
 
   return (
     <SafeAreaProvider>
-      <AppNavigation />
+      <RootNavigator />
     </SafeAreaProvider>
   );
 };

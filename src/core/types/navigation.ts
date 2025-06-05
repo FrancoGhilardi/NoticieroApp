@@ -2,8 +2,7 @@ import { RouteProp } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 export type RootStackParamList = {
-  News: undefined;
-  User: undefined;
+  Tabs: undefined;
   NewsDetail: {
     title: string;
     content: string;

@@ -1,5 +1,5 @@
 {
-  "settings": "Ajustes",
+  "language": "Idioma",
   "change_language": "Cambiar idioma",
   "select_language": "Seleccionar idioma",
   "spanish": "Español",
@@ -11,7 +11,13 @@
     "users": "Usuarios",
     "settings": "Ajustes"
   },
-  "settings-theme": "Ajustes",
+  "settings-theme": "Tema",
   "light_mode": "Modo Claro",
-  "dark_mode": "Modo Oscuro"
+  "dark_mode": "Modo Oscuro",
+  "read-more": "Leer más",
+  "loading_users": "Cargando usuarios...",
+  "error_loading_users": "Ocurrio un error al cargar los usuarios.",
+  "loading_news": "Cargando las noticias...",
+  "error_loading_news": "Ocurrio un error al cargar las noticias.",
+  "not_saved_news": "No tiene noticias guardadas."
 }

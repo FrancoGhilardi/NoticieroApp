@@ -1,9 +1,11 @@
 import { RootStackParamListProps } from "@/src/core/types/navigation";
 import { News } from "@/src/domain/entities/News";
 import { useFavoritesStore } from "@/src/state/favoriteState";
-import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { Image, Text, TouchableOpacity } from "react-native";
+import { Image, Text, View } from "react-native";
+import FavIconButton from "../../atoms/FavIconButton";
+import ReadMoreButton from "../../atoms/ReadMoreButton";
+import { styles } from "./styles";
 
 interface Props {
   item: News;
@@ -25,28 +27,18 @@ const ListCard: React.FC<Props> = ({ item }) => {
   };
 
   return (
-    <TouchableOpacity style={{ marginBottom: 20 }} onPress={handlePress}>
-      <Image
-        source={{ uri: thumbnail }}
-        style={{ width: "100%", height: 200, borderRadius: 8 }}
-      />
-      <TouchableOpacity
+    <View style={styles.container}>
+      <Image source={{ uri: thumbnail }} style={styles.image} />
+      <FavIconButton
         onPress={() => toggleFavorite(item)}
-        style={{ position: "absolute", right: 10, top: 10 }}
-      >
-        <Ionicons
-          name={isFavorite ? "heart" : "heart-outline"}
-          size={24}
-          color="red"
-        />
-      </TouchableOpacity>
-      <Text style={{ fontWeight: "bold", fontSize: 18, marginTop: 8 }}>
-        {title}
-      </Text>
-      <Text numberOfLines={2} style={{ color: "#666" }}>
+        isFavorite={isFavorite}
+      />
+      <Text style={styles.title}>{title}</Text>
+      <Text numberOfLines={2} style={styles.content}>
         {content}
       </Text>
-    </TouchableOpacity>
+      <ReadMoreButton onPress={handlePress} />
+    </View>
   );
 };
 

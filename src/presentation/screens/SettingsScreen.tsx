@@ -1,77 +1,47 @@
 import i18n from "@/src/core/i18n";
 import { setLanguage } from "@/src/core/storage/languagesStorage";
-import { useThemeStore } from "@/src/state/themeState";
-import { useTheme } from "@react-navigation/native";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Button, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import SettingsOptions from "../components/atoms/SettingsOptions";
+import SettingsCard from "../components/molecules/SettingsCard";
+import { styles } from "./styles/SettingsScreen-styles";
 
 const SettingsScreen: React.FC = () => {
+  const currentLanguage = i18n.language;
   const { t } = useTranslation();
-  const { theme, toggleTheme } = useThemeStore();
-  const isDark = theme === "dark";
-  const { colors } = useTheme();
 
   const changeLanguage = async (lang: "en" | "es") => {
     await i18n.changeLanguage(lang);
     await setLanguage(lang);
   };
 
-  const styles = StyleSheet.create({
-    safeArea: {
-      flex: 1,
-      padding: 20,
-    },
-    container: {
-      marginTop: 20,
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    title: {
-      fontSize: 24,
-      marginBottom: 20,
-    },
-    light: {
-      backgroundColor: "#fff",
-    },
-    dark: {
-      backgroundColor: "#121212",
-    },
-    textLight: {
-      color: colors.text,
-    },
-    textDark: {
-      color: colors.text,
-    },
-    text: {
-      fontSize: 20,
-      marginBottom: 15,
-    },
-  });
-
   return (
-    <SafeAreaView
-      style={[styles.safeArea, isDark ? styles.dark : styles.light]}
-    >
-      <Text style={[styles.text, isDark ? styles.textDark : styles.textLight]}>
-        {t("settings")}
-      </Text>
-      <Button title={t("spanish")} onPress={() => changeLanguage("es")} />
-      <Button title={t("english")} onPress={() => changeLanguage("en")} />
-      <View style={styles.container}>
-        <Text
-          style={[styles.title, isDark ? styles.textDark : styles.textLight]}
-        >
-          {t("settings-theme")}
-        </Text>
-
-        <Button
-          title={t(isDark ? "light_mode" : "dark_mode")}
-          onPress={toggleTheme}
-          color={isDark ? "#fff" : "#000"}
+    <SafeAreaView style={styles.container}>
+      <SettingsCard label={t("language")}>
+        <SettingsOptions
+          label={t("spanish")}
+          onPress={() => changeLanguage("es")}
+          selected={currentLanguage === "es"}
         />
-      </View>
+        <SettingsOptions
+          label={t("english")}
+          onPress={() => changeLanguage("en")}
+          selected={currentLanguage === "en"}
+        />
+      </SettingsCard>
+      <SettingsCard label={t("settings-theme")}>
+        <SettingsOptions
+          label={t("light_mode")}
+          onPress={() => changeLanguage("es")}
+          selected={true}
+        />
+        <SettingsOptions
+          label={t("dark_mode")}
+          onPress={() => changeLanguage("en")}
+          selected={false}
+        />
+      </SettingsCard>
     </SafeAreaView>
   );
 };
