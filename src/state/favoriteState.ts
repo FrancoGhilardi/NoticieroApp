@@ -1,12 +1,12 @@
+import { getFavorites, saveFavorites } from "@/src/core/storage/storage";
 import { News } from "@/src/domain/entities/News";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 
 interface FavoritesState {
   favorites: News[];
   toggleFavorite: (news: News) => void;
   isFavorite: (id: number) => boolean;
-  loadFavorites: () => void;
+  loadFavorites: () => Promise<void>;
 }
 
 export const useFavoritesStore = create<FavoritesState>((set, get) => ({
@@ -19,14 +19,14 @@ export const useFavoritesStore = create<FavoritesState>((set, get) => ({
       ? favorites.filter((item) => item.id !== news.id)
       : [...favorites, news];
 
-    AsyncStorage.setItem("favorites", JSON.stringify(newFavorites));
+    saveFavorites(newFavorites);
     set({ favorites: newFavorites });
   },
 
   isFavorite: (id) => get().favorites.some((item) => item.id === id),
 
   loadFavorites: async () => {
-    const stored = await AsyncStorage.getItem("favorites");
-    if (stored) set({ favorites: JSON.parse(stored) });
+    const loaded = await getFavorites();
+    set({ favorites: loaded });
   },
 }));
