@@ -3,9 +3,15 @@ import { ActivityIndicator, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { initI18n } from "./src/core/i18n";
 import AppNavigation from "./src/presentation/navigation";
+import { useThemeStore } from "./src/state/themeState";
 
 const App: React.FC = () => {
   const [ready, setReady] = useState<boolean>(false);
+  const loadTheme = useThemeStore((state) => state.loadTheme);
+
+  useEffect(() => {
+    loadTheme();
+  }, [loadTheme]);
 
   useEffect(() => {
     const setup = async () => {

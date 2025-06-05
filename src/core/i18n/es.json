@@ -10,5 +10,8 @@
     "favorites": "Favoritos",
     "users": "Usuarios",
     "settings": "Ajustes"
-  }
+  },
+  "settings-theme": "Ajustes",
+  "light_mode": "Modo Claro",
+  "dark_mode": "Modo Oscuro"
 }
