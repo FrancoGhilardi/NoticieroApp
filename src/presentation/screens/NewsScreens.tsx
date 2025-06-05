@@ -1,11 +1,12 @@
 import { Suspense } from "react";
-import { Text, View } from "react-native";
+import { Text } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import ErrorBoundary from "../components/organisms/ErrorBoundary";
 import NewsList from "../components/organisms/NewsList";
 
 const NewsScreen: React.FC = () => {
   return (
-    <View style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <ErrorBoundary
         fallback={<Text>Ocurrió un error al cargar las noticias.</Text>}
       >
@@ -13,7 +14,7 @@ const NewsScreen: React.FC = () => {
           <NewsList />
         </Suspense>
       </ErrorBoundary>
-    </View>
+    </SafeAreaView>
   );
 };
 
