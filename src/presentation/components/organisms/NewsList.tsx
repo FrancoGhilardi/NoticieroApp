@@ -13,6 +13,7 @@ const NewsList: React.FC = () => {
         data={news}
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={{ padding: 16 }}
+        showsVerticalScrollIndicator={false}
         renderItem={({ item }) => <ListCard item={item} />}
       />
     </View>
