@@ -7,13 +7,14 @@ interface Props {
 }
 
 const UserCard: React.FC<Props> = ({ user }) => {
+  const { firstname, lastname, email, phone } = user;
   return (
     <View style={styles.card}>
       <Text style={styles.name}>
-        {user.firstname} {user.lastname}
+        {firstname} {lastname}
       </Text>
-      <Text>{user.email}</Text>
-      <Text>{user.phone}</Text>
+      <Text>{email}</Text>
+      <Text>{phone}</Text>
     </View>
   );
 };

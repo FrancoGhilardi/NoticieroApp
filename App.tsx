@@ -1,13 +1,7 @@
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import NewsScreen from "./src/presentation/screens/NewsScreens";
+import AppNavigation from "./src/presentation/navigation";
 
 const App: React.FC = () => {
-  return (
-    <SafeAreaProvider style={{ flex: 1, backgroundColor: "blue" }}>
-      {/* <UsersScreen /> */}
-      <NewsScreen />
-    </SafeAreaProvider>
-  );
+  return <AppNavigation />;
 };
 
 export default App;

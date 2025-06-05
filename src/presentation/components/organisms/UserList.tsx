@@ -9,6 +9,7 @@ const UsersList: React.FC = () => {
     <FlatList
       data={users}
       keyExtractor={(item) => item.id.toString()}
+      showsVerticalScrollIndicator={false}
       renderItem={({ item }) => <UserCard user={item} />}
     />
   );

@@ -1,24 +1,39 @@
+import { RootStackParamListProps } from "@/src/core/types/navigation";
 import { News } from "@/src/domain/entities/News";
-import { Image, Text, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { Image, Text, TouchableOpacity } from "react-native";
 
 interface Props {
   item: News;
 }
 
 const ListCard: React.FC<Props> = ({ item }) => {
+  const { title, content, thumbnail, image, publishedAt } = item;
+  const navigation = useNavigation<RootStackParamListProps>();
+
+  const handlePress = () => {
+    navigation.navigate("NewsDetail", {
+      title,
+      content,
+      image,
+      publishedAt,
+    });
+  };
+
   return (
-    <View style={{ marginBottom: 20 }}>
+    <TouchableOpacity style={{ marginBottom: 20 }} onPress={handlePress}>
       <Image
-        source={{ uri: item.thumbnail }}
+        source={{ uri: thumbnail }}
         style={{ width: "100%", height: 200, borderRadius: 8 }}
       />
       <Text style={{ fontWeight: "bold", fontSize: 18, marginTop: 8 }}>
-        {item.title}
+        {title}
       </Text>
       <Text numberOfLines={2} style={{ color: "#666" }}>
-        {item.content}
+        {content}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 };
+
 export default ListCard;
