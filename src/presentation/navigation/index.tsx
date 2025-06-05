@@ -1,14 +1,21 @@
 import { TAB_SCREENS } from "@/src/core/constants/tabConfig";
+import { useFavoritesStore } from "@/src/state/favoriteState";
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import { ComponentProps } from "react";
+import { ComponentProps, useEffect } from "react";
 
 export type IoniconsName = ComponentProps<typeof Ionicons>["name"];
 
 const Tab = createBottomTabNavigator();
 
 const AppNavigation: React.FC = () => {
+  const loadFavorites = useFavoritesStore((state) => state.loadFavorites);
+
+  useEffect(() => {
+    loadFavorites();
+  }, [loadFavorites]);
+
   return (
     <NavigationContainer>
       <Tab.Navigator
