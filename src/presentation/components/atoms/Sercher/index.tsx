@@ -1,5 +1,7 @@
+import { Colors } from "@/src/core/theme/Colors";
 import { useTranslation } from "react-i18next";
 import { TextInput } from "react-native";
+import { styles } from "./styles";
 
 interface Props {
   query: string;
@@ -8,18 +10,14 @@ interface Props {
 
 const Sercher: React.FC<Props> = ({ query, setQuery }) => {
   const { t } = useTranslation();
+
   return (
     <TextInput
       placeholder={t("search_placeholder")}
       value={query}
       onChangeText={setQuery}
-      style={{
-        borderWidth: 1,
-        borderColor: "#ccc",
-        borderRadius: 8,
-        padding: 12,
-        marginBottom: 16,
-      }}
+      style={styles.input}
+      placeholderTextColor={Colors.Black}
     />
   );
 };

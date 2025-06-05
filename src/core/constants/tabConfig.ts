@@ -1,4 +1,4 @@
-import { IoniconsName } from "@/src/presentation/navigation";
+import { IoniconsName } from "@/src/presentation/navigation/AppNavigator";
 import FavoritesScreens from "@/src/presentation/screens/FavoritesScreens";
 import NewsScreens from "@/src/presentation/screens/NewsScreens";
 import SettingsScreen from "@/src/presentation/screens/SettingsScreen";
@@ -14,7 +14,7 @@ export const TAB_SCREENS: TabConfig[] = [
   {
     key: "tabs.news",
     component: NewsScreens,
-    icon: "home",
+    icon: "newspaper",
   },
   {
     key: "tabs.favorites",
@@ -24,7 +24,7 @@ export const TAB_SCREENS: TabConfig[] = [
   {
     key: "tabs.users",
     component: UsersScreen,
-    icon: "person",
+    icon: "people",
   },
   {
     key: "tabs.settings",

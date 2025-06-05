@@ -1,4 +1,7 @@
-import { getFavorites, saveFavorites } from "@/src/core/storage/storage";
+import {
+  getFavorites,
+  saveFavorites,
+} from "@/src/core/storage/favoritesStorage";
 import { News } from "@/src/domain/entities/News";
 import { create } from "zustand";
 

@@ -1,16 +1,16 @@
 import { Suspense } from "react";
-import { Text } from "react-native";
+import { useTranslation } from "react-i18next";
 import { SafeAreaView } from "react-native-safe-area-context";
+import ErrorLoad from "../components/molecules/ErrorLoad";
 import ErrorBoundary from "../components/organisms/ErrorBoundary";
 import NewsList from "../components/organisms/NewsList";
 
 const NewsScreen: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ErrorBoundary
-        fallback={<Text>Ocurrió un error al cargar las noticias.</Text>}
-      >
-        <Suspense fallback={<Text>Cargando noticias...</Text>}>
+      <ErrorBoundary fallback={<ErrorLoad label={t("error_loading_news")} />}>
+        <Suspense fallback={<ErrorLoad label={t("loading_news")} />}>
           <NewsList />
         </Suspense>
       </ErrorBoundary>

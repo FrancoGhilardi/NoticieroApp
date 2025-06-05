@@ -1,5 +1,5 @@
 {
-  "settings": "Settings",
+  "language": "Language",
   "change_language": "Change Language",
   "select_language": "Select Language",
   "spanish": "Spanish",
@@ -11,7 +11,13 @@
     "users": "Users",
     "settings": "Settings"
   },
-  "settings-theme": "Settings",
+  "settings-theme": "Theme",
   "light_mode": "Light Mode",
-  "dark_mode": "Dark Mode"
+  "dark_mode": "Dark Mode",
+  "read-more": "Read more",
+  "loading_users": "Loaging users...",
+  "error_loading_users": "An error occurred while loading users.",
+  "loading_news": "Loading news...",
+  "error_loading_news": "An error occurred while loading the news.",
+  "not_saved_news": "You have no saved news."
 }
