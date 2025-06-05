@@ -10,5 +10,8 @@
     "favorites": "Favorites",
     "users": "Users",
     "settings": "Settings"
-  }
+  },
+  "settings-theme": "Settings",
+  "light_mode": "Light Mode",
+  "dark_mode": "Dark Mode"
 }

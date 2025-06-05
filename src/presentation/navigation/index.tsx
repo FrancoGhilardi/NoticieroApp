@@ -1,5 +1,7 @@
 import { TAB_SCREENS } from "@/src/core/constants/tabConfig";
+import { DarkThemeCustom, LightTheme } from "@/src/core/theme/theme";
 import { useFavoritesStore } from "@/src/state/favoriteState";
+import { useThemeStore } from "@/src/state/themeState";
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
@@ -11,15 +13,18 @@ export type IoniconsName = ComponentProps<typeof Ionicons>["name"];
 const Tab = createBottomTabNavigator();
 
 const AppNavigation: React.FC = () => {
-  const loadFavorites = useFavoritesStore((state) => state.loadFavorites);
   const { t } = useTranslation();
+  const loadFavorites = useFavoritesStore((state) => state.loadFavorites);
+  const theme = useThemeStore((state) => state.theme);
 
   useEffect(() => {
     loadFavorites();
   }, [loadFavorites]);
 
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      theme={theme === "dark" ? DarkThemeCustom : LightTheme}
+    >
       <Tab.Navigator
         screenOptions={({ route }) => {
           const screen = TAB_SCREENS.find((s) => s.key === route.name);
