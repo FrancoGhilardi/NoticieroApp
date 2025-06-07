@@ -1,14 +1,16 @@
-export interface News {
-  id: number;
-  slug: string;
-  url: string;
-  title: string;
-  content: string;
-  image: string;
-  thumbnail: string;
-  status: string;
-  category: string;
-  publishedAt: string;
-  updatedAt: string;
-  userId: number;
+export class News {
+  constructor(
+    public readonly id: number,
+    public readonly slug: string,
+    public readonly url: string,
+    public readonly title: string,
+    public readonly content: string,
+    public readonly image: string,
+    public readonly thumbnail: string,
+    public readonly status: string,
+    public readonly category: string,
+    public readonly publishedAt: string,
+    public readonly updatedAt: string,
+    public readonly userId: number
+  ) {}
 }

@@ -27,14 +27,20 @@ const ListCard: React.FC<Props> = ({ item }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Image source={{ uri: thumbnail }} style={styles.image} />
+    <View style={styles.container} testID="ListCard-container">
+      <Image
+        source={{ uri: thumbnail }}
+        style={styles.image}
+        testID="ListCard-image"
+      />
       <FavIconButton
         onPress={() => toggleFavorite(item)}
         isFavorite={isFavorite}
       />
-      <Text style={styles.title}>{title}</Text>
-      <Text numberOfLines={2} style={styles.content}>
+      <Text style={styles.title} testID="ListCard-title">
+        {title}
+      </Text>
+      <Text numberOfLines={2} style={styles.content} testID="ListCard-content">
         {content}
       </Text>
       <ReadMoreButton onPress={handlePress} />

@@ -7,8 +7,10 @@ type Props = {
 
 const ErrorLoad: React.FC<Props> = ({ label }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>{label}</Text>
+    <View style={styles.container} testID="Error-container">
+      <Text style={styles.text} testID="Error-text">
+        {label}
+      </Text>
     </View>
   );
 };

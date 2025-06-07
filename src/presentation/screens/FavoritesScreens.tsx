@@ -2,7 +2,7 @@ import { useFavoritesStore } from "@/src/state/favoriteState";
 import { useTranslation } from "react-i18next";
 import { FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import ErrorLoad from "../components/molecules/ErrorLoad";
+import ErrorLoad from "../components/atoms/ErrorLoad";
 import ListCard from "../components/molecules/ListCard";
 
 const FavoritesScreens: React.FC = () => {

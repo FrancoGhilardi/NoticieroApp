@@ -18,6 +18,7 @@ const Sercher: React.FC<Props> = ({ query, setQuery }) => {
       onChangeText={setQuery}
       style={styles.input}
       placeholderTextColor={Colors.Black}
+      testID="Text-input"
     />
   );
 };

@@ -1,16 +1,17 @@
-import { useGetInitials } from "@/src/core/utils/hooks/useGetInitials";
+import { getInitials } from "@/src/core/utils/getInitials";
 import { Text, View } from "react-native";
 import { styles } from "./styles";
 
 type Props = {
-  first: string;
-  last: string;
+  name: string;
 };
 
-const InitialIcon: React.FC<Props> = ({ first, last }) => {
+const InitialIcon: React.FC<Props> = ({ name }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>{useGetInitials(first, last)}</Text>
+    <View style={styles.container} testID="Initial-icon-container">
+      <Text style={styles.text} testID="Initial-icon-text">
+        {getInitials(name)}
+      </Text>
     </View>
   );
 };

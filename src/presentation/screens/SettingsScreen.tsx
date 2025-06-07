@@ -30,18 +30,6 @@ const SettingsScreen: React.FC = () => {
           selected={currentLanguage === "en"}
         />
       </SettingsCard>
-      <SettingsCard label={t("settings-theme")}>
-        <SettingsOptions
-          label={t("light_mode")}
-          onPress={() => changeLanguage("es")}
-          selected={true}
-        />
-        <SettingsOptions
-          label={t("dark_mode")}
-          onPress={() => changeLanguage("en")}
-          selected={false}
-        />
-      </SettingsCard>
     </SafeAreaView>
   );
 };

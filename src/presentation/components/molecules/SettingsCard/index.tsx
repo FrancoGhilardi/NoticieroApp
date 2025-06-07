@@ -9,8 +9,10 @@ type Props = {
 
 const SettingsCard: React.FC<Props> = ({ label, children }) => {
   return (
-    <View style={styles.cards}>
-      <Text style={styles.title}>{label}</Text>
+    <View style={styles.cards} testID="Setting-card-container">
+      <Text style={styles.title} testID="Setting-card-text">
+        {label}
+      </Text>
       {children}
     </View>
   );
