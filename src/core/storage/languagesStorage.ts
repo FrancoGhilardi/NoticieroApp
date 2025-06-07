@@ -1,11 +1,10 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-const LANGUAGE_KEY = "language";
+import { Keys } from "../constants/keys";
 
 export const getLanguage = async (): Promise<string | null> => {
-  return await AsyncStorage.getItem(LANGUAGE_KEY);
+  return await AsyncStorage.getItem(Keys.LANGUAGE_KEY);
 };
 
 export const setLanguage = async (lang: string): Promise<void> => {
-  await AsyncStorage.setItem(LANGUAGE_KEY, lang);
+  await AsyncStorage.setItem(Keys.LANGUAGE_KEY, lang);
 };

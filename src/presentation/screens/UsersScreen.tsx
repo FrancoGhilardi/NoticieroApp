@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import { SafeAreaView } from "react-native-safe-area-context";
-import ErrorLoad from "../components/molecules/ErrorLoad";
+import ErrorLoad from "../components/atoms/ErrorLoad";
 import ErrorBoundary from "../components/organisms/ErrorBoundary";
 import UsersList from "../components/organisms/UserList";
 

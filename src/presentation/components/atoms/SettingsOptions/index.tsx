@@ -10,8 +10,14 @@ type Props = {
 const SettingsOptions: React.FC<Props> = ({ onPress, label, selected }) => {
   const styles = buildStyles(selected);
   return (
-    <TouchableOpacity onPress={onPress} style={styles.button}>
-      <Text style={styles.text}>{label}</Text>
+    <TouchableOpacity
+      onPress={onPress}
+      style={styles.button}
+      testID="Button-setting-options"
+    >
+      <Text style={styles.text} testID="text-setting-options">
+        {label}
+      </Text>
     </TouchableOpacity>
   );
 };

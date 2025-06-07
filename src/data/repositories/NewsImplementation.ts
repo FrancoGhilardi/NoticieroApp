@@ -1,11 +1,18 @@
 import { News } from "../../domain/entities/News";
 import { INewsRepository } from "../../domain/repositories/NewsRepository";
-import { toNewsEntity } from "../models/NewsModels";
+import { fetchNews } from "../services/newsService";
 
 export class NewsRepositoryImpl implements INewsRepository {
+  private cachedNews: News[] | null = null;
+
   async getNewsList(): Promise<News[]> {
-    const response = await fetch("https://jsonplaceholder.org/posts");
-    const json = await response.json();
-    return json.map(toNewsEntity);
+    if (this.cachedNews) return this.cachedNews;
+    const news = await fetchNews();
+    this.cachedNews = news;
+    return news;
+  }
+
+  clearCache() {
+    this.cachedNews = null;
   }
 }
