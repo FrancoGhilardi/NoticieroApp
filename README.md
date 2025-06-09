@@ -1,50 +1,139 @@
-# Welcome to your Expo app 👋
+# 📰 NoticieroApp
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicación de noticias desarrollada con **React Native** y **Expo**, pensada para ofrecer una experiencia moderna, responsiva y modular. Permite consultar noticias, ver detalles, marcar favoritas y cambiar idioma.
 
-## Get started
+---
 
-1. Install dependencies
+## 📌 Descripción del proyecto
 
-   ```bash
-   npm install
-   ```
+NoticieroApp es una app móvil de lectura de noticias que consume datos de [JSONPlaceholder](https://jsonplaceholder.org/). La app permite:
 
-2. Start the app
+- Buscar y leer noticias
+- Visualizar detalles de cada noticia
+- Guardar favoritas (persistidas localmente)
+- Cambiar idioma (soporte para español e inglés)
+- Navegación entre distintas pantallas de forma fluida
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## 🧠 Arquitectura
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+El proyecto está basado en **Clean Architecture**, **MVVM** y **DDD (Domain-Driven Design)**. Las capas están organizadas de la siguiente forma:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- **core**: utilidades generales como temas, almacenamiento, internacionalización.
+- **data**: fuentes de datos, implementación de servicios y caché.
+- **domain**: entidades, casos de uso y contratos de repositorios.
+- **presentation**: componentes, pantallas, navegación y view models.
+- **state**: manejo de estado global con Zustand.
 
-## Get a fresh project
+Este enfoque permite una alta escalabilidad, mantenibilidad y testeo eficiente.
 
-When you're ready, run:
+---
 
-```bash
-npm run reset-project
+## 🛠️ Tecnologías y librerías utilizadas
+
+### 🔧 Base del proyecto
+
+- **Expo SDK 53**
+- **React Native 0.79.3**
+- **TypeScript**
+
+### 📦 Librerías principales
+
+| Librería                                    | Uso                                                                 |
+| ------------------------------------------- | ------------------------------------------------------------------- |
+| `zustand`                                   | Estado global y persistencia de favoritos                           |
+| `react-i18next` + `i18next`                 | Internacionalización (i18n) de la aplicación                        |
+| `@react-native-async-storage/async-storage` | Almacenamiento local (favoritas e idioma)                           |
+| `@expo/vector-icons`                        | Íconos personalizables                                              |
+| `react-navigation`                          | Navegación con tabs y stack                                         |
+| `expo-system-ui`, `expo-constants`, etc.    | Interacción con funcionalidades del sistema                         |
+| `expo-image`                                | Renderizado optimizado de imágenes                                  |
+| `expo-haptics`                              | Feedback háptico (vibración) para interacciones clave               |
+| `react-native-reanimated`                   | Animaciones de alto rendimiento                                     |
+| `react-native-webview`                      | Visualización de contenido web (si es necesario en futuras mejoras) |
+| `react-native-responsive-fontsize`          | Adaptacion del tamaño de fuente para aplicaciones moviles           |
+
+---
+
+## 🧪 Testing
+
+El proyecto utiliza **Jest** con **React Native Testing Library** y mocks específicos ubicados en la carpeta `__mocks__`.
+
+Cobertura automática de test incluida con:
+
+```
+npm run test
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## 🚀 Cómo ejecutar el proyecto
 
-To learn more about developing your project with Expo, look at the following resources:
+### ✅ Requisitos previos
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- Node.js 18+
+- Expo CLI (`npm install -g expo-cli`)
+- Android Studio o Xcode (para emuladores)
 
-## Join the community
+---
 
-Join our community of developers creating universal apps.
+### ▶️ Emulador Android/iOS
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+npm install
+npm run android     # o npm run ios
+```
+
+---
+
+### 📱 Dispositivo físico
+
+1. Instalar la app **Expo Go** en tu dispositivo desde App Store o Play Store.
+2. En la terminal:
+
+```bash
+npm start
+```
+
+3. Escanear el código QR con la app Expo Go.
+
+---
+
+## 📁 Estructura de carpetas destacada
+
+```
+src/
+├── core/           # Constantes, hooks, i18n, temas y almacenamiento
+├── data/           # Servicios, modelos, implementación de repositorios
+├── domain/         # Entidades, contratos y casos de uso
+├── presentation/   # Componentes UI, pantallas, navegación y view models
+├── state/          # Estado global (Zustand)
+__tests__/          # Tests unitarios por capa
+__mocks__/          # Mocks de librerías nativas
+```
+
+---
+
+## 📄 Scripts útiles
+
+```bash
+npm run start         # Iniciar el proyecto
+npm run android       # Ejecutar en emulador Android
+npm run ios           # Ejecutar en emulador iOS
+npm run web           # Ejecutar en navegador
+npm run lint          # Linting con ESLint
+npm run test          # Ejecutar pruebas con cobertura
+npm run reset-project # Limpieza del proyecto
+```
+
+---
+
+## 💡 Funcionalidades por implementar (ideas)
+
+- Login/autenticación
+- Notificaciones push
+- Integración con fuentes reales de noticias
+- Compartir noticias en redes
+
+---
