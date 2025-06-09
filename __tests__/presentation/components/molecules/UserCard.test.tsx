@@ -1,26 +1,24 @@
 import { mockUsers } from "@/jest/setup";
+import { User } from "@/src/domain/entities/User";
 import UserCard from "@/src/presentation/components/molecules/UserCard";
 import { render } from "@testing-library/react-native";
 import React from "react";
 
-const fakeUser = mockUsers[0];
-
 describe("UserCard", () => {
-  it("debería renderizar correctamente los datos del usuario y el InitialIcon", () => {
-    const { getByTestId, getByText } = render(<UserCard user={fakeUser} />);
+  const mockUser: User = mockUsers[0];
 
-    expect(getByTestId("User-card-container")).toBeTruthy();
+  it("debería renderizar el contenedor y los textos con la información del usuario", () => {
+    const { getByTestId } = render(<UserCard user={mockUser} />);
 
-    expect(getByTestId("User-card-container-text")).toBeTruthy();
+    const container = getByTestId("User-card-container");
+    const nameText = getByTestId("User-card-name");
+    const emailText = getByTestId("User-card-email");
+    const phoneText = getByTestId("User-card-phone");
 
-    expect(getByTestId("User-card-name").props.children).toBe(fakeUser.name);
-    expect(getByTestId("User-card-email").props.children).toBe(fakeUser.email);
-    expect(getByTestId("User-card-phone").props.children).toBe(fakeUser.phone);
-
-    expect(getByText(fakeUser.name)).toBeTruthy();
-    expect(getByText(fakeUser.email)).toBeTruthy();
-    expect(getByText(fakeUser.phone)).toBeTruthy();
-
-    expect(getByTestId("Initial-icon-container")).toBeTruthy();
+    expect(container).toBeTruthy();
+    expect(nameText.props.children).toContain(mockUser.firstname);
+    expect(nameText.props.children).toContain(mockUser.lastname);
+    expect(emailText.props.children).toBe(mockUser.email);
+    expect(phoneText.props.children).toBe(mockUser.phone);
   });
 });

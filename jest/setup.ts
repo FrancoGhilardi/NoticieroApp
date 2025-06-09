@@ -13,9 +13,7 @@ jest.mock("@/src/data/services/newsService", () => ({
 }));
 
 jest.mock("@/src/core/utils/getInitials", () => ({
-  getInitials: (name: string) => {
-    return name === "Franco Ghilardi" ? "FG" : "??";
-  },
+  getInitials: jest.fn(),
 }));
 
 export const mockNavigate = jest.fn();
@@ -28,24 +26,33 @@ jest.mock("@react-navigation/native", () => ({
 
 export const mockUsers: User[] = [
   {
-    id: 1,
-    name: "Juan Pérez",
-    email: "juan@example.com",
-    phone: "123-456-7890",
-    username: "juanp",
-    website: "juan.com",
     address: {
-      city: "Buenos Aires",
-      street: "Calle Falsa",
-      suite: "Apt. 123",
-      zipcode: "1234",
+      city: "Anytown",
       geo: { lat: "0", lng: "0" },
+      street: "123 Main Street",
+      suite: "Apt. 4",
+      zipcode: "12345-6789",
     },
+    birthDate: "1973-01-22",
     company: {
-      name: "Empresa SA",
-      bs: "negocios",
-      catchPhrase: "Hacemos cosas",
+      bs: "Marketing",
+      catchPhrase: "Innovative solutions for all your needs",
+      name: "ABC Company",
     },
+    email: "johndoe@example.com",
+    firstname: "John",
+    id: 1,
+    lastname: "Doe",
+    login: {
+      md5: "c1328472c5794a25723600f71c1b4586",
+      password: "jsonplaceholder.org",
+      registered: "2023-01-10T10:03:20.022Z",
+      sha1: "35544a31cc19bd6520af116554873167117f4d94",
+      username: "johndoe",
+      uuid: "1a0eed01-9430-4d68-901f-c0d4c1c3bf22",
+    },
+    phone: "(555) 555-1234",
+    website: "www.johndoe.com",
   },
 ];
 
