@@ -19,5 +19,6 @@
   "error_loading_users": "An error occurred while loading users.",
   "loading_news": "Loading news...",
   "error_loading_news": "An error occurred while loading the news.",
-  "not_saved_news": "You have no saved news."
+  "not_saved_news": "You have no saved news.",
+  "news": "News"
 }

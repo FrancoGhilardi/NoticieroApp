@@ -3,14 +3,16 @@ import { Text, View } from "react-native";
 import { styles } from "./styles";
 
 type Props = {
-  name: string;
+  firstname: string;
+  lastname: string;
 };
 
-const InitialIcon: React.FC<Props> = ({ name }) => {
+const InitialIcon: React.FC<Props> = ({ firstname, lastname }) => {
+  const initials = getInitials(firstname, lastname);
   return (
     <View style={styles.container} testID="Initial-icon-container">
       <Text style={styles.text} testID="Initial-icon-text">
-        {getInitials(name)}
+        {initials}
       </Text>
     </View>
   );

@@ -9,12 +9,12 @@ interface Props {
 }
 
 const UserCard: React.FC<Props> = ({ user }) => {
-  const { name, email, phone } = user;
+  const { firstname, lastname, email, phone } = user;
   return (
     <View style={styles.card} testID="User-card-container">
       <View testID="User-card-container-text">
         <Text style={styles.name} testID="User-card-name">
-          {name}
+          {firstname} {lastname}
         </Text>
         <Text style={styles.email} testID="User-card-email">
           {email}
@@ -23,7 +23,7 @@ const UserCard: React.FC<Props> = ({ user }) => {
           {phone}
         </Text>
       </View>
-      <InitialIcon name={name} />
+      <InitialIcon firstname={firstname} lastname={lastname} />
     </View>
   );
 };

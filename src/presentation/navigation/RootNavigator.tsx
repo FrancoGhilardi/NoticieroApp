@@ -1,5 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useTranslation } from "react-i18next";
 import NewsDetailsScreen from "../screens/NewsDetailsScreen";
 import AppNavigation from "./AppNavigator";
 
@@ -16,18 +17,19 @@ export type RootStackParamList = {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootNavigator: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
           name="Tabs"
           component={AppNavigation}
-          options={{ headerShown: false }}
+          options={{ headerShown: false, title: "" }}
         />
         <Stack.Screen
           name="NewsDetail"
           component={NewsDetailsScreen}
-          options={{ title: "Noticias" }}
+          options={{ title: t("news") }}
         />
       </Stack.Navigator>
     </NavigationContainer>
