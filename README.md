@@ -75,6 +75,11 @@ npm run test
 - Node.js 18+
 - Expo CLI (`npm install -g expo-cli`)
 - Android Studio o Xcode (para emuladores)
+- Crear un archivo `.env` en la raiz del proyecto y colocar lo siguiente:
+
+```bash
+API_BASE_URL=https://jsonplaceholder.org
+```
 
 ---
 

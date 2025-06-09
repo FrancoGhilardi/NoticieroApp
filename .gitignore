@@ -41,3 +41,5 @@ app-example
 /coverage
 
 package-lock.json
+
+.env
